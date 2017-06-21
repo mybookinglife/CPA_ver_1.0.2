@@ -1,0 +1,30 @@
+{% extends "core/index.html" %} 
+
+{% block head %}
+
+{% load staticfiles %}
+<script src="{% static 'js/company.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="table_service">
+<a>123</a>
+</div>
+
+<div id="dialog-form" title="Change e-mail(login)">
+ 
+	<form id="form_change_email" method="POST" action="{% url 'login_change' %}">{% csrf_token %}
+      
+		<ul>
+        	{{ form_change_email.as_ul }}
+		</ul>	
+    
+	</form>
+
+</div>
+
+{% endblock %}
+
+
+

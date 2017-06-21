@@ -1,0 +1,51 @@
+{% extends "core/index.html" %} 
+
+{% block head %}
+
+{% load staticfiles %}
+<script src="{% static 'js/service.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<select id="filter_service" name="filter_service">
+	<option value="all"> Все</option>
+	<option value="active"> Активные</option>
+	<option value="inactive"> Неактивные</option>
+</select> 
+<input class="submit_filter" type="submit" value="Выбрать"></p>
+
+<input class="new_service" type="button" name="submit" id='new-service' value="New service"> 
+
+<div class="table_service">
+{% include "service_list.html" %}
+</div>
+
+<div id="dialog-form" title="Create new service">
+ 
+  <form id="form_new_service" method="POST" action="{% url 'add_service' %}">{% csrf_token %}
+      
+ 	 <ul>
+        {{ form_new_service.as_ul }}
+    </ul>	
+    
+</form>
+
+</div>
+
+<div id="dialog-form" title="Edit service">
+ 
+  <form id="form_edit_service" method="POST">{% csrf_token %}
+      
+ 	 <ul class='fields_edit_service'>
+       <!-- {{ form_edit_service.as_ul }} -->
+    </ul>	
+    
+</form>
+   
+</div>
+
+{% endblock %}
+
+
+

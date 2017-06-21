@@ -1,0 +1,18 @@
+{% extends "core/layout.html" %}
+
+{% block head %}
+
+{% load staticfiles %}
+
+{% load render_bundle from webpack_loader %}
+
+{% endblock %}
+
+{% block content %}
+
+{#    {% csrf_token %}#}
+    <div id='mybooking-app'></div>
+
+{% render_bundle 'common' %}
+{% render_bundle 'mybookings' %}
+{% endblock %}

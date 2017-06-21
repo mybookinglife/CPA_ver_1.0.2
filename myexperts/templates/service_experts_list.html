@@ -1,0 +1,16 @@
+{% if service_experts_list %}
+<ul id='list_service_experts'>
+	{% for service_experts_object in service_experts_list %}
+		<li id="service_experts-{{service_experts_object.id}}-{{service_experts_object.expert_id}}">
+		{% if service_experts_object.is_active == True %}	
+			<label class="edit_service_experts"><input checked="checked" type="checkbox"/>{{service_experts_object.name}}</label>
+		{% else %}
+			<label class="edit_service_experts"><input type="checkbox"/>{{service_experts_object.name}}</label>
+		{% endif %}
+		</li>
+	{% endfor %}
+</ul>
+
+{% else %}
+	<p>No expert are available.</p>
+{% endif %} 

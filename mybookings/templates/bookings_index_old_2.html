@@ -1,0 +1,42 @@
+{% extends "core/index.html" %} 
+
+{% block head %}
+
+{% load staticfiles %}
+<script src="{% static 'js/booking.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<select class="form-control" id="filter_booking" name="filter_booking">
+	<option value="all"> Все</option>
+	<option value="is_new"> Новые</option>
+	<option value="is_not_new"> Обработанные</option>
+</select> 
+<button id='submit_filter' type="button" class="btn btn-info">Выбрать</button>
+<!-- <input class="submit_filter" type="submit" value="Выбрать"></p>
+ -->
+<button id='new-booking' type="button" class="btn btn-success">New booking</button>
+<!-- <input class="new_booking" type="button" name="submit" id='new-booking' value="New booking"> 
+ -->
+<div class="table_bookings">
+{% include "bookings_list.html" %}
+</div>
+
+<div id="dialog-form" title="Edit booking">
+ 
+  <form id="form_edit_booking" method="POST">{% csrf_token %}
+      
+ 	 <ul class='fields_edit_booking'>
+       {{ form_edit_booking.as_ul }}
+    </ul>	
+    
+</form>
+   
+</div>
+
+{% endblock %}
+
+
+

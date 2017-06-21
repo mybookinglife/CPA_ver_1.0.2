@@ -1,0 +1,10 @@
+{% if object_list %}
+<ul id='list_bookings'>
+	{% for booking_object in object_list %}
+	<li id="booking-{{booking_object.id}}"><a class="edit_booking">{{booking_object.date}}</a><input class="delete_booking" type="button" name="submit" id='delete-booking-{{booking_object.id}}' value="Delete"></li>
+	{% endfor %}
+</ul>
+
+{% else %}
+	<p>No bookings are available.</p>
+{% endif %} 

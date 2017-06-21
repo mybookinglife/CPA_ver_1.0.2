@@ -1,0 +1,13 @@
+{% if expert_list %}
+<ul id='list_expert'>
+	{% for expert_object in expert_list %}
+		<li id="expert-{{expert_object.id}}"><a class="select_expert">{{expert_object.name}}</a>
+			<input class="edit_expert" type="button" name="submit" id='edit-expert-{{expert_object.id}}' value="Edit expert">
+			<input class="delete_expert" type="button" name="submit" id='delete-expert-{{expert_object.id}}' value="Delete">
+		</li>
+	{% endfor %}
+</ul>
+
+{% else %}
+	<p>No expert are available.</p>
+{% endif %} 

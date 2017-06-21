@@ -1,0 +1,56 @@
+<form id="form_TableBookingsContainer" method="POST">{% csrf_token %}
+<table id="TableBookingsContainer" class="table table-striped table-bordered" cellspacing="0" width="100%">
+ 		<thead>
+            <tr>
+                <th></th>
+                <th>id</th>
+                <th>date_time</th>
+                <th>date</th>
+                <th>time</th>
+                <th>client</th>
+                <th>note</th>
+                <th>comment</th>
+                <th>is_new</th>
+                <th>is_cansel</th>
+                <th>is_finished</th>
+                <th></th>                
+             </tr>
+        </thead>
+</table>
+</form>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+    
+ 	  $('#TableBookingsContainer').dataTable({
+ 		 "ajax": {
+            "url": "http://127.0.0.1:8000/mybookings/api/list/",
+            "dataSrc": ''
+        	},
+        "scrollY":        "60vh",
+        "scrollCollapse": true,
+        "scrollX": true,
+        "order": [[1, "desc" ]],	          
+  		"columns": [
+        	        {"defaultContent": "<a href='{% url 'show_calendar' %}' style='color: white; font-size: 24px'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a>"},
+       	            { "data": "id" },
+       	            { "data": "date_time" },
+       	          	{ "data": "date" },
+       	        	{ "data": "time" },
+       	        	{ "data": "client" },
+       	        	{ "data": "note" },
+       	        	{ "data": "comment" },
+       	        	{ "data": "is_new" },
+       	        	{ "data": "is_cansel" },
+       	        	{ "data": "is_finished" },
+       	        	{"defaultContent": "<a href='{% url 'show_calendar' %}' style='color: white; font-size: 24px'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a>"}]  
+         	        	 //{ "data": "<span class='glyphicon glyphicon-calendar' aria-hidden='true'></span>" }
+           	        	  
+        } );  
+ 	  
+ 	  
+ 
+	
+} );	
+</script>

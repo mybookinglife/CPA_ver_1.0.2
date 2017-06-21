@@ -1,0 +1,86 @@
+ 
+body {
+            background: #f3f2f3;
+            color: #000000;
+            font-family: Trebuchet MS, Arial, Times New Roman;
+            font-size: 12px;
+}
+ 
+/* #container {
+            background: #FFFFFF;
+            margin: 30px auto;
+            width: 100%;
+            height: 100%;
+} */
+ 
+ #header {
+            background: #838283;
+            height: 30px;
+            width: 100%;
+}
+
+#auth {
+            background: #838283;
+	    text-align: right;
+            width: 100%;
+}
+
+.auth a {
+	    color: blue;
+}
+
+#navigation {
+            background: #a2a2a2;
+            float: right;
+            width: 100%;
+            height: 100px;
+}
+
+#menu {
+            background: #333333;
+            float: left;
+             width: 100%;
+            height: 100%;
+             text-align: center;
+            color: red;
+} 
+.glyphicon-pencil {
+            color: black;
+
+} 
+
+.glyphicon-trash {
+            color: black;
+
+} 
+#menu_button {
+            background: #333333;
+            float: left;
+            width: 100%;
+            height: 100px;
+            text-align: center;
+}
+
+#content {
+            /* background: #d2d0d2; */
+            float: right;
+	   		height: 100%; 
+            width: 100%;
+} 
+
+#content_logout {
+            background: #d2d0d2;
+            float: right;
+	    height: 100%; 
+            width: 100%;
+}
+ 
+#clear {
+            clear:both;
+}
+ 
+#footer {
+            background: #838283;
+            height: 20px;
+            width: 100%;
+}

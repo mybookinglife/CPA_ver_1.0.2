@@ -1,0 +1,11 @@
+Django==1.10.4
+Pillow==3.4.0
+autopep8==1.2.4
+django-jquery==3.1.0
+djangorestframework==3.5.3
+pep8==1.7.0
+pytz==2016.10
+django-webpack-loader==0.4.1
+channels
+asgi_redis
+redis

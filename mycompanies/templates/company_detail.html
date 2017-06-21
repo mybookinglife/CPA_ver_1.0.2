@@ -1,0 +1,12 @@
+{% extends "core/index.html" %} 
+{% block content %}
+
+<H1>About company</H1>
+<form method="POST">{% csrf_token %}
+	{{ form.as_p }}
+	<p><strong>Новый пароль:<input type="password" maxlength=25 name="password"></strong></p>
+	<p><strong>Поддтверждение:<input type="password" maxlength=25 name="passwordconf"></strong></p>
+	<button type="submit">Сохранить</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "core/index.html" %} 
+
+{% block head %}
+
+{% load staticfiles %}
+<script src="{% static "js/client.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<select id="filter_client" name="filter_client">
+	<option value="all"> Все</option>
+	<option value="is_vip"> VIP</option>
+	<option value="is_not_vip"> Не VIP</option>
+</select> 
+<input class="submit_filter" type="submit" value="Выбрать"></p>
+
+<input class="new_client" type="button" name="submit" id='new-client' value="New client"> 
+
+<div class="table_clients">
+{% include "clients_list.html" %}
+</div>
+
+<div id="dialog-form" title="Create new client">
+ 
+  <form id="form_new_client" method="POST" action="{% url 'add_client' %}">{% csrf_token %}
+      
+ 	 <ul>
+        {{ form_new_client.as_ul }}
+    </ul>	
+    
+</form>
+
+</div>
+
+<div id="dialog-form" title="Edit client">
+ 
+  <form id="form_edit_client" method="POST">{% csrf_token %}
+      
+ 	 <ul class='fields_edit_client'>
+       <!-- {{ form_edit_client.as_ul }} -->
+    </ul>	
+    
+</form>
+   
+</div>
+
+{% endblock %}
+
+
+

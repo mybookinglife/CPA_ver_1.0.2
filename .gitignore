@@ -1,0 +1,17 @@
+/venv/
+*.pyc
+*/__pycache__/
+*/migrations/
+*/migrations/
+/.project
+/.pydevproject
+__pycache__
+/db.sqlite3
+/logs/*.*
+/src/node_modules/
+*.sublime-project
+*.sublime-workspace
+/.settings/
+/.vscode/
+/.idea/
+/utils/gcm.py

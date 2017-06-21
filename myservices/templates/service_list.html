@@ -1,0 +1,11 @@
+{% if service_list %}
+<ul id='list_service'>
+	{% for service_object in service_list %}
+	<!--<li class="edit_service" id="service-{{service_object.id}}"><a href="{% url 'list_services' %}{{service_object.id}}/">{{service_object.name}}</a><input class="delete_service" type="button" name="submit" id='delete-service-{{service_object.id}}' value="Delete"></li>--> 
+	<li id="service-{{service_object.id}}"><a class="edit_service">{{service_object.name}}</a><input class="delete_service" type="button" name="submit" id='delete-service-{{service_object.id}}' value="Delete"></li>
+	{% endfor %}
+</ul>
+
+{% else %}
+	<p>No service are available.</p>
+{% endif %} 

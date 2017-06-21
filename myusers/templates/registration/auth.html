@@ -1,0 +1,64 @@
+{% block auth %}
+			
+	{% if user.is_authenticated %}
+	    Welcome, <a href="{% url 'company_index'%}">{{ user.username }}</a>. <a href="{% url 'logout'%}?next=/">Log out</a>
+	{% else %}
+	
+			{% load staticfiles %}
+	
+	   	Welcome, new user. Please <a id="login">Sing in</a> or <a id='register'>Register user</a> or <a id='registercompany'>Register company</a>
+	   	
+	   	<div id="dialog-form" title="Register new user">
+	 
+	  		<form id="register_form" method="POST"">{% csrf_token %}
+	      
+	 	 		<table>
+	        		{{ UserCreationform.as_table }}
+	    		</table>	
+	    		
+			</form>
+	   
+		</div>
+		
+		<div id="dialog-form" title="Sing in dialog">
+	 
+	  		<form id="login_form" method="POST" action="{% url 'login' %}">{% csrf_token %}
+	      
+	 	 		<ul>
+	        		{{ UserLoginForm.as_ul }}
+	    		</ul>
+	    			
+	    		<a id="recovery">Forgot your password?</a>
+	    		
+			</form>
+	   
+		</div>
+		
+		<div id="dialog-form" title="Recovery password">
+	 
+	  		<form id="recovery_form" method="POST" action="{% url 'password_reset' %}">{% csrf_token %}
+	      
+	 	 		<ul>
+	        		{{ PasswordRecoveryform.as_ul }}
+	    		</ul>
+	    				    		
+			</form>
+	   
+		</div>
+		
+		<div id="dialog-form" title="Register new company">
+	 
+	  		<form id="registercompany_form" method="POST">{% csrf_token %}
+	      
+	 	 		<ul>
+	        		{{ CompanyCreationform.as_table }}
+	    		</ul>	
+	    		
+			</form>
+	   
+		</div>
+		
+	
+	{% endif %}
+
+{% endblock %}

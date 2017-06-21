@@ -1,0 +1,10 @@
+{% if clients_list %}
+<ul id='list_clients'>
+	{% for client_object in clients_list %}
+	<li id="client-{{client_object.id}}"><a class="edit_client">{{client_object.name}}</a><input class="delete_client" type="button" name="submit" id='delete-client-{{client_object.id}}' value="Delete"></li>
+	{% endfor %}
+</ul>
+
+{% else %}
+	<p>No clients are available.</p>
+{% endif %} 

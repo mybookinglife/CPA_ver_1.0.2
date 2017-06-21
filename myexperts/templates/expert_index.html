@@ -1,0 +1,73 @@
+{% extends "core/index.html" %} 
+
+{% block head %}
+
+{% load staticfiles %}
+<script src="{% static 'js/expert.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<table style="WIDTH: 100%" border=1>
+<col style="WIDTH: 60%"/>
+<col style="WIDTH: 40%" />
+
+<tr>
+<td>
+<select id="filter_expert" name="filter_expert">
+	<option value="all"> Все</option>
+	<option value="active"> Активные</option>
+	<option value="inactive"> Неактивные</option>
+</select> 
+<input class="submit_filter" type="submit" value="Выбрать">
+
+<input class="new_expert" type="button" name="submit" id='new-expert' value="New expert"> 
+</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>
+<div class="table_expert">
+	{% include "expert_list.html" %}
+</div>
+</td>
+
+<td>
+<div class="table_service_experts">
+	{% include "service_experts_list.html" %}
+</div>
+</td>
+
+</tr>
+</table>
+
+<div id="dialog-form" title="Create new expert">
+ 
+  <form id="form_new_expert" method="POST" action="{% url 'add_expert' %}">{% csrf_token %}
+      
+ 	 <ul>
+        {{ form_new_expert.as_ul }}
+    </ul>	
+    
+</form>
+
+</div>
+
+<div id="dialog-form" title="Edit expert">
+ 
+  <form id="form_edit_expert" method="POST">{% csrf_token %}
+      
+ 	 <ul class='fields_edit_expert'>
+       <!-- {{ form_edit_expert.as_ul }} -->
+    </ul>	
+    
+</form>
+   
+</div>
+
+{% endblock %}
+
+
+

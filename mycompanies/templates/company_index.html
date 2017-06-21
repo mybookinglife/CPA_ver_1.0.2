@@ -1,0 +1,28 @@
+{% extends "core/index.html" %} 
+
+{% block head %}
+
+{% load staticfiles %}
+<script src="{% static 'js/company.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<H1>About company</H1>
+<form id="about_company" method="POST">{% csrf_token %}
+	<a href="{% url 'password_change' %}">Change password</a>
+	<br>
+	<a id="login_change">Change login ({{ email }})</a>
+	{{ form.as_ul }}
+	<button type="submit">Сохранить</button>
+</form>
+
+<div id="dialog-form" title="Change login dialog">
+	<form id="login_change_form" method="POST" action="{% url 'login' %}">{% csrf_token %}     
+		<ul>
+			{{ login_change_form.as_ul }}
+	    </ul>   			
+	</form> 
+</div>
+
+{% endblock %}

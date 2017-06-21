@@ -1,0 +1,96 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>My booking</title>
+
+    <!-- Styles
+             ================================================== -->
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+{#    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>#}
+    <link rel="stylesheet" href="{% static 'plugins/jquery/jquery-ui.css' %}">
+
+    <!-- Javascript
+            ================================================== -->
+
+    <script src="{% static 'plugins/jquery/jquery.js' %}"></script>
+    <script src="{% static 'plugins/jquery/jquery-ui.js' %}"></script>
+{#    <script src="{% static 'js/core.js' %}"></script>#}
+{#    <script src="{% static 'plugins/chained_selects/delayed_fill.js' %}"></script>#}
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+
+
+    {% block head %}{% endblock %}
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+{#            <div id="header">#}
+{#                <H1>MyBooking.life</H1>#}
+{#            </div>#}
+
+            <div id="auth" class="auth">
+{#                {% include 'registration/auth.html' %}#}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+{#        {% if user.is_authenticated == True %}#}
+        {% if True %}
+
+{#            <div class="col-md-1">#}
+{#                <div id="menu_button">#}
+{#                    <p>#}
+{#                        <a href="/" style="color: white; font-size: 20px"> ... </a>#}
+{#                    </p>#}
+{#                </div>#}
+{#                <!-- <div id="navigation">{% include 'core/navigation.html' %}</div> -->#}
+{#                <div id="menu">{% include 'core/menu.html' %}</div>#}
+{##}
+{#            </div>#}
+            <div class="col-md-11">
+                <div id="content">{% block content %}{% endblock %}</div>
+            </div>
+
+        {% else %}
+
+            <div class="col-md-12">
+                <div id="content_logout">
+
+                    {% include 'core/wellcom_page.html' %}
+                    {% block register %}{% endblock %}
+
+                    <div id="content">
+                        {% block password_reset_confirm %}
+                        {% endblock %}</div>
+
+                    <script src="{% static 'js/register.js' %}"></script>
+                    <script src="{% static 'js/login.js' %}"></script>
+                    <script src="{% static 'js/registercompany.js' %}"></script>
+
+                </div>
+            </div>
+
+        {% endif %}
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="footer">{% include 'core/footer.html' %}</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
