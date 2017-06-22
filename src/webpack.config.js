@@ -11,7 +11,7 @@ module.exports = {
         mybookings: [
             "webpack-dev-server/client?http://" + ip + ":3001",
             //"webpack/hot/only-dev-server",
-            "./core",
+            "./app",
         ],
         common: ['react'],
 

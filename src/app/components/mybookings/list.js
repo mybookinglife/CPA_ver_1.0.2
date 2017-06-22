@@ -1,11 +1,11 @@
 import React, {Component, PropTypes} from 'react';
-import * as actions from '../actions/mybookings';
+import * as actions from '../../actions/mybookings';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import * as Api from '../api/mybookings';
+import * as Api from '../../api/mybookings';
 
-import ListLayout from '../components/list';
+import ListLayout from './list-layout';
 
 class List extends Component {
 
@@ -22,8 +22,8 @@ class List extends Component {
 
     render() {
 
-        console.log(this.props);
-        // debugger;
+        // console.log(this.props);
+        //debugger;
 
         return (
             <div>

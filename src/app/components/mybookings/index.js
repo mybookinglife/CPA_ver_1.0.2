@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import * as actions from '../actions/mybookings';
+import * as actions from '../../actions/mybookings';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import MainComponentLayout from '../components/main-component-layout';
-import Menu from '../components/menu';
+import MainComponentLayout from '../core/main-component-layout';
+import Menu from './menu';
 
 class Bookings extends Component {
 

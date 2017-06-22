@@ -1,7 +1,7 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
-import Record from '../record';
-import styles from './index.less';
+import Record from './record';
+import styles from './list.less';
 
 class ListLayout extends Component{
 

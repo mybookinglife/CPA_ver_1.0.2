@@ -4,11 +4,11 @@ import ReactDOM from "react-dom";
 import 'bootstrap';
 import 'bootstrap/less/bootstrap.less';
 
-import MainMenuLayout from './components/main-menu-layout';
-import Bookings from './containers/bookings';
-import Detail from './containers/detail';
-import List from './containers/list';
-import NotFound from './components/not-found';
+import MainMenuLayout from './components/core/main-menu-layout';
+import Bookings from './components/mybookings';
+import Detail from './components/mybookings/detail';
+import List from './components/mybookings/list';
+import NotFound from './components/core/not-found';
 
 import Calendar from './components/calendar1';
 
@@ -18,7 +18,7 @@ import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-ro
 import { syncHistoryWithStore } from 'react-router-redux';
 
 
-import Login from './components/login';
+import Login from './components/myusers/login';
 import * as auth from './api/auth';
 import * as ws from './api/websocket';
 

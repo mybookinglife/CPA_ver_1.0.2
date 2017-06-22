@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {bindActionCreators} from 'redux';
-import * as actions from '../actions/mybookings';
-import NotFound from '../components/not-found'
-import DetailLayout from '../components/detail'
-import ListLayout from '../components/list';
-import * as Api from '../api/mybookings';
+import * as actions from '../../actions/mybookings';
+import NotFound from '../core/not-found'
+import DetailLayout from './detail-layout'
+import ListLayout from './list-layout';
+import * as Api from '../../api/mybookings';
 
 
 class Detail extends Component {

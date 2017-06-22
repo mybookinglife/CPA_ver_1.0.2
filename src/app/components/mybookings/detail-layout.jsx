@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { Link, browserHistory } from 'react-router';
 
-import ModalDialog from '../modal-dialog';
+import ModalDialog from '../core/modal-dialog';
 import { editBooking } from '../../api/mybookings';
 
 import LayoutField from './layout-field';

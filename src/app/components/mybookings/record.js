@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { Link, browserHistory } from 'react-router';
-import styles from './index.less';
+import styles from './record.less';
 import cn from 'classnames';
 import * as icon from '../../constants/views';
 import { deleteBooking } from '../../api/mybookings';
-import ModalDialog from '../modal-dialog';
+import ModalDialog from '../core/modal-dialog';
 
 class Record extends Component{
     constructor(props) {
