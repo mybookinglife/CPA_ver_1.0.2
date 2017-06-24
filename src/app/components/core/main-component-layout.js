@@ -1,10 +1,11 @@
+import MenuComponent from './menu-component';
 export default function MainComponentLayout(props) {
 
     return (
         <div className="container-fluid">
             <div className="row">
                <footer>
-                   {props.menu}
+                   {MenuComponent(props)}
                </footer>
             </div>
             <div className="row">

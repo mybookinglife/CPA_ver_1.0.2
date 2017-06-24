@@ -29,6 +29,6 @@ urlpatterns = [
     url(r'^get_info_client/(?P<client_id>\d+)/$', views.get_info_client, name='get_info_client'),
     url(r'^delete_client/(?P<client_id>\d+)/$', views.delete_client, name='delete_client'),
     url(r'^filter/(?P<value_filter>\w+)/$', views.list_clients, name='filter_clients'),  
-    url(r'^$', views.list_clients, name='list_clients'),
-    url(r'^api/', include(router.urls)),
+    # url(r'^$', views.list_clients, name='list_clients'),
+     url(r'^api/', include(router.urls)),
     ]

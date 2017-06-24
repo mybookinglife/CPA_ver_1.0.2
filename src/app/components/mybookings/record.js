@@ -4,7 +4,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import { Link, browserHistory } from 'react-router';
 import styles from './record.less';
 import cn from 'classnames';
-import * as icon from '../../constants/views';
+import * as icon from '../../constants/icons';
 import { deleteBooking } from '../../api/mybookings';
 import ModalDialog from '../core/modal-dialog';
 

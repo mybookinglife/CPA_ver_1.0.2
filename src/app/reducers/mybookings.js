@@ -44,6 +44,7 @@ function myBookings(state = initialState, action) {
             console.log(action.payload);
             return Object.assign(state);
         default:
+            //debugger;
             return Object.assign(state);
     }
 

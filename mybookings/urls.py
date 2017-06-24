@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^work/$', views.list_bookings, name='list_of_working_bookings'),
     url(r'^completed/$', views.list_bookings, name='list_of_completed_bookings'),
     # url(r'^list/$', views.list_bookings, name='list_bookings'),
-    url(r'^', generic.TemplateView.as_view(template_name='bookings_root.html'), name='list_bookings'),
+    # url(r'^', generic.TemplateView.as_view(template_name='bookings_root.html'), name='list_bookings'),
 
 
 #     url(r'^api/', include(router.urls)),

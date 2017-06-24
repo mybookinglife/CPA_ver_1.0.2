@@ -5,10 +5,12 @@ import 'bootstrap';
 import 'bootstrap/less/bootstrap.less';
 
 import MainMenuLayout from './components/core/main-menu-layout';
-import Bookings from './components/mybookings';
+import MainComponentLayout from './components/core/main-component-layout';
 import Detail from './components/mybookings/detail';
 import List from './components/mybookings/list';
 import NotFound from './components/core/not-found';
+import ListClient from './components/myclients/list';
+
 
 import Calendar from './components/calendar1';
 
@@ -53,11 +55,14 @@ ReactDOM.render(
             <Route path="/" component={MainMenuLayout}>
                 <Route onEnter={ login }>
                     <IndexRoute component={Calendar}/>
-                    <Route path="mybookings" component={Bookings}>
+                    <Route path="mybookings" component={MainComponentLayout}>
                         <IndexRoute component={List}/>
                         <Route path=':id/' component={Detail}/>
                     </Route>
-                    <Route path="myclients" component={NotFound}/>
+                    <Route path="myclients" component={MainComponentLayout}>
+                        <IndexRoute component={ListClient}/>
+                        <Route path=':id/' component={Detail}/>
+                    </Route>
                     <Route path="mycalendar" component={Calendar}/>
                 </Route>
                 <Route path='/login/' component={Login} />

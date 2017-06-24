@@ -76,7 +76,7 @@ export function getProfileBooking(props) {
 
 export function addBooking(props) {
 
-    const { addBookingSuccess, addBookingError } = props.actions;
+    //const { addBookingSuccess, addBookingError } = props.actions;
     let csrftoken = getCookie('csrftoken');
 
     let obj = {
@@ -106,13 +106,16 @@ export function addBooking(props) {
         .then(response => {
 
             if (response.status == 201) {
-                addBookingSuccess(obj);
-                getBookings(props);
+
+                store.dispatch(actions.addBookingSuccess(obj))
+                // addBookingSuccess(obj);
+                //getBookings(props);
                 return response;
             }
         })
         .catch(function (error) {
-            addBookingError(error);
+            store.dispatch(actions.addBookingError(error))
+            // addBookingError(error);
             if (error.response.status == 403 || error.response.status == 401) {
                 closeSession();
             } else {
