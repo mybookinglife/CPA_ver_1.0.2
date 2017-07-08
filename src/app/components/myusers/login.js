@@ -1,32 +1,21 @@
+import React, { Component } from 'react';
+import LoginLayout from './login-layout';
 
-var React = require('react');
-var auth = require('../../api/auth');
 
-module.exports = React.createClass({
-    contextTypes: {
-        router: React.PropTypes.object.isRequired
-    },
+export default class Login extends Component{
 
-    handleSubmit: function(e) {
-        e.preventDefault()
+    constructor(props){
+        super(props);
+    };
 
-        var username = this.refs.username.value
-        var pass = this.refs.pass.value
+    componentDidUpdate() {
 
-        auth.login(username, pass, (loggedIn) => {
-            if (loggedIn) {
-                this.context.router.replace('/')
-            }
-        })
-    },
+        $('.bs-modal-login').modal({backdrop: "static"});
 
-    render: function() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="username" ref="username" />
-                <input type="password" placeholder="password" ref="pass" />
-                <input type="submit" />
-            </form>
-        )
     }
-})
+    render() {
+        return (
+            <LoginLayout />
+          )
+    };
+}

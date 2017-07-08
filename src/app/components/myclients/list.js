@@ -3,7 +3,7 @@ import * as actions from '../../actions/myclients';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-class ListClient extends Component{
+class ListClients extends Component{
 
     render(){
         return <div></div>
@@ -26,4 +26,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListClient);
+export default connect(mapStateToProps, mapDispatchToProps)(ListClients);

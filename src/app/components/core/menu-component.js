@@ -18,7 +18,7 @@ export default function MenuComponent(props){
     return (
         <div>
             <Button bsStyle="success" onClick={addObj.bind(props)} aria-label="Left Align"><span
-                className={icon.icon_book}/> Создать</Button>
+                className={icon.icon_plus}/></Button>
         </div>
     );
 

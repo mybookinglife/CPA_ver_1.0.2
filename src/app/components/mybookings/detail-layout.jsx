@@ -42,7 +42,7 @@ class DetailLayout extends Component{
             </div>
 
        return (
-            <ModalDialog className="bs-modal-detail" id={id} title={title_body} body={modal_body} buttons={buttons_dialog}/>
+            <ModalDialog className="bs-modal-detail" size="modal-lg" id={id} title={title_body} body={modal_body} buttons={buttons_dialog}/>
 
         );
 

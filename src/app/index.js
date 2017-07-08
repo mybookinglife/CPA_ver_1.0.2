@@ -9,7 +9,7 @@ import MainComponentLayout from './components/core/main-component-layout';
 import Detail from './components/mybookings/detail';
 import List from './components/mybookings/list';
 import NotFound from './components/core/not-found';
-import ListClient from './components/myclients/list';
+import ListClients from './components/myclients/list';
 
 
 import Calendar from './components/calendar1';
@@ -21,6 +21,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 
 import Login from './components/myusers/login';
+import LoginLayout from './components/myusers/login-layout';
 import * as auth from './api/auth';
 import * as ws from './api/websocket';
 
@@ -32,7 +33,7 @@ function login(nextState, replace) {
     if (!auth.loggedIn()) {
         replace({
             pathname:'/login/',
-            state: {nextPathname: '/'}
+            state: {nextPathname: nextState.location.pathname}
         })
     }else {
         ws.connectWebSocket(this.props);
@@ -42,10 +43,10 @@ function login(nextState, replace) {
 function logout(nextState, replace) {
 
     if (auth.logout()) {
-        replace({
-            pathname: '/',
-            state: {nextPathname: '/'}
-        })
+        // replace({
+        //     pathname: '/',
+        //     state: {nextPathname: '/'}
+        // })
     }
 }
 
@@ -60,12 +61,12 @@ ReactDOM.render(
                         <Route path=':id/' component={Detail}/>
                     </Route>
                     <Route path="myclients" component={MainComponentLayout}>
-                        <IndexRoute component={ListClient}/>
+                        <IndexRoute component={ListClients}/>
                         <Route path=':id/' component={Detail}/>
                     </Route>
                     <Route path="mycalendar" component={Calendar}/>
                 </Route>
-                <Route path='/login/' component={Login} />
+                <Route path='/login/' component={LoginLayout} />
                 <Route path='/logout/' onEnter={ logout } />
                 <Route path='*' component={NotFound}/>
             </Route>

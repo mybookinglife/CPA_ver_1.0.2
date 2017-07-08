@@ -10,9 +10,8 @@ function ModalDialog(props) {
     let modal_header = "";
     if (props.title != undefined) {
         modal_header = <div className="modal-header">
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close"
-                    onClick={closeModal}><span
-                aria-hidden="true">&times;</span></button>
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={closeModal}>
+                <span aria-hidden="true">&times;</span></button>
             <h4 className="modal-title" id="mySmallModalLabel">{props.title}</h4>
         </div>
     }
@@ -33,7 +32,7 @@ function ModalDialog(props) {
     return (
         <div className={"modal " + props.className + "" + props.id} role="dialog"
              aria-labelledby="mySmallModalLabel">
-            <div className="modal-dialog" role="document">
+            <div className={"modal-dialog "+ props.size} role="document">
                 <div className="modal-content">
                     {modal_header}
                     {modal_body}
