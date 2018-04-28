@@ -7,6 +7,7 @@ import cn from 'classnames';
 import * as icon from '../../constants/icons';
 import { deleteBooking } from '../../api/mybookings';
 import ModalDialog from '../core/modal-dialog';
+import { URL_LIST } from "../../constants/config";
 
 class Record extends Component{
     constructor(props) {
@@ -43,7 +44,7 @@ class Record extends Component{
 
         let buttons = (
             <ButtonGroup>
-                <Link to={'/mybookings/' + item.id + '/'} className="btn btn-info btn-sm" role="button"><span
+                <Link to={URL_LIST + item.id + '/'} className="btn btn-info btn-sm" role="button"><span
                     className={icon.icon_edit}/></Link>
                 <ModalDialog className="bs-modal-delete" id={item.id} title={title_body} buttons={buttons_dialog}/>
                 <Button bsStyle="danger" bsSize="small" onClick={this.openDialogDelete.bind(this)}><span
@@ -57,7 +58,7 @@ class Record extends Component{
             <tr className={cn({[styles.record]: true})} key={index}>
 
                 {cols.map((col_item, col_index) => {
-                    let is_link =  <Link to={'/mybookings/' + item.id + '/'}>{item[col_item.id]}</Link>;
+                    let is_link =  <Link to={URL_LIST + item.id + '/'}>{item[col_item.id]}</Link>;
                     return (col_item.is_eval == true) ? <td key={col_index}>{eval(col_item.eval)}</td> : <td key={col_index}>{item[col_item.id]}</td>
                    }
                 )}

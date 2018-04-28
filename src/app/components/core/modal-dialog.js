@@ -1,8 +1,9 @@
 import { Link, browserHistory } from 'react-router';
+import { URL_LIST } from "../../constants/config";
 import { Button } from 'react-bootstrap';
 
 function closeModal(){
-        browserHistory.push('/mybookings/');
+        browserHistory.push(URL_LIST);
     }
 
 function ModalDialog(props) {

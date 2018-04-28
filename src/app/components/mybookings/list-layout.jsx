@@ -14,10 +14,10 @@ class ListLayout extends Component{
             {id:"id", name: "№", eval: "is_link", is_eval:true},
             {id:"date", name: 'Дата'},
             {id:"time", name: 'Время'},
-            {id:"client", name: 'Клиент'},
-            {id:"phone", name: 'Телефон'},
-            {id:"service", name: 'Услуга'},
-            {id:"expert", name: 'Специалист',},
+            {id:"client_name", name: 'Клиент'},
+            {id:"phone_client", name: 'Телефон'},
+            {id:"service_name", name: 'Услуга'},
+            {id:"expert_name", name: 'Специалист',},
             {id:"is_new", name: 'Новая', eval:"new_booking", is_eval: true},
             {id:"actions", name: '', eval:"buttons", is_eval:true}
             ];

@@ -1,57 +1,69 @@
 from django.db.models import Q
-from rest_framework.generics import( 
-    ListAPIView, 
-    RetrieveAPIView, 
-    UpdateAPIView, 
-    DestroyAPIView, 
+from rest_framework.generics import(
+    ListAPIView,
+    RetrieveAPIView,
+    UpdateAPIView,
+    DestroyAPIView,
+    ListCreateAPIView,
     CreateAPIView)
 
 from mybookings.models import Booking
 from mybookings.serializers import (
-    BookingListSerializer, 
-    BookingDetailSerializer, 
-    BookingCreateUpdateSerializer, 
+    BookingListSerializer,
+    BookingDetailSerializer,
+    BookingCreateUpdateSerializer,
     )
 from .permissions import IsOwner
 from .pagination import BookingPageNumberPagination
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
+from rest_framework.response import Response
+from rest_framework import status
 
 
 # from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly
 
 class BookingCreateApiView(CreateAPIView):
-    queryset = Booking.objects.all()
-    serializer_class = BookingCreateUpdateSerializer 
+    # queryset = Booking.objects.all()
+    serializer_class = BookingCreateUpdateSerializer
     permission_classes = [IsAuthenticated]
-    
-    def perform_create(self, serializer):
-        serializer.save(is_new=True)  
 
+    def perform_create(self, serializer):
+        serializer.save(is_new=True)
+
+    # def create(self, request, *args, **kwargs):
+    #     serializer = self.get_serializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     self.perform_create(serializer)
+    #
+    #     serializer_response = BookingListSerializer(Booking.objects.filter(id=serializer.data.get("id")))
+    #
+    #     headers = self.get_success_headers(serializer_response.data)
+    #     return Response(serializer_response.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class BookingUpdateApiView(UpdateAPIView):
     queryset = Booking.objects.all()
-    serializer_class = BookingCreateUpdateSerializer 
+    serializer_class = BookingCreateUpdateSerializer
     permission_classes = [IsAuthenticated, IsOwner]
     authentication_classes = [SessionAuthentication, TokenAuthentication]
 
     def perform_update(self, serializer):
-        serializer.save()  
-        
-    
+        serializer.save()
+
+
 class BookingDeleteApiView(DestroyAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingListSerializer
-    permission_classes = [IsAuthenticated, IsOwner] 
+    permission_classes = [IsAuthenticated, IsOwner]
 
 
 class BookingDetailApiView(RetrieveAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingDetailSerializer
     permission_classes = [IsAuthenticated, IsOwner]
-    
+
 class BookingListApiView(ListAPIView):
     serializer_class = BookingListSerializer
     filter_backends = [SearchFilter, OrderingFilter]
@@ -84,5 +96,5 @@ class BookingListApiView(ListAPIView):
                 Q(note__icontains = query)|
                 Q(comment__icontains = query)
                 ).distinct()
-        
-        return queryset_list    
+
+        return queryset_list

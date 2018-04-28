@@ -6,10 +6,15 @@ import 'bootstrap/less/bootstrap.less';
 
 import MainMenuLayout from './components/core/main-menu-layout';
 import MainComponentLayout from './components/core/main-component-layout';
+import CommonLayout from './components/core/common-layout';
+
+
 import Detail from './components/mybookings/detail';
 import List from './components/mybookings/list';
 import NotFound from './components/core/not-found';
 import ListClients from './components/myclients/list';
+
+import {URL_LOGIN, URL_LOGOUT, URL_CALENDAR, URL_CLIENTS, URL_LIST, URL} from './constants/config';
 
 
 import Calendar from './components/calendar1';
@@ -19,55 +24,33 @@ import store from './store';
 import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-
 import Login from './components/myusers/login';
-import LoginLayout from './components/myusers/login-layout';
-import * as auth from './api/auth';
-import * as ws from './api/websocket';
-
+import {signIn, signOut} from "./api/auth";
 const history = syncHistoryWithStore(browserHistory, store);
 
-
-function login(nextState, replace) {
-
-    if (!auth.loggedIn()) {
-        replace({
-            pathname:'/login/',
-            state: {nextPathname: nextState.location.pathname}
-        })
-    }else {
-        ws.connectWebSocket(this.props);
-    }
-}
-
-function logout(nextState, replace) {
-
-    if (auth.logout()) {
-        // replace({
-        //     pathname: '/',
-        //     state: {nextPathname: '/'}
-        // })
-    }
+const pushMain = function () {
+    browserHistory.push(URL);
 }
 
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
-            <Route path="/" component={MainMenuLayout}>
-                <Route onEnter={ login }>
-                    <IndexRoute component={Calendar}/>
-                    <Route path="mybookings" component={MainComponentLayout}>
+            <Route path={URL}>
+                <IndexRoute component={CommonLayout}/>
+                <Route component={MainMenuLayout} onEnter={ signIn } >
+                    <Route path={URL_LIST} component={MainComponentLayout}>
                         <IndexRoute component={List}/>
                         <Route path=':id/' component={Detail}/>
                     </Route>
-                    <Route path="myclients" component={MainComponentLayout}>
+                    <Route path={URL_CLIENTS} component={MainComponentLayout}>
                         <IndexRoute component={ListClients}/>
                         <Route path=':id/' component={Detail}/>
                     </Route>
-                    <Route path="mycalendar" component={Calendar}/>
+                    <Route path={URL_CALENDAR} component={Calendar}/>
                 </Route>
-                <Route path='/login/' component={LoginLayout} />
-                <Route path='/logout/' onEnter={ logout } />
+                <Route path = {URL_LOGIN} component={Login} />
+                <Route path = {URL_LOGOUT} onEnter={ signOut } />
+                <Route path='/index/' onEnter={ pushMain }/>
                 <Route path='*' component={NotFound}/>
             </Route>
         </Router>

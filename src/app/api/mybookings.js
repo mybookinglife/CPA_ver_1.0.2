@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as config from '../constants/config';
 import { Link, browserHistory } from 'react-router';
 import { getCookie } from './cookie';
-import { closeSession } from './auth';
+import { closeSession, signIn } from './auth';
 import store from '../store';
 import * as actions from '../actions/mybookings';
 
@@ -13,7 +13,9 @@ export function getBookings(props) {
 
     let csrftoken = getCookie('csrftoken');
     // let csrftoken = "56073ff4de0ef69c4699c04b1c8d2a8c3efdd5c0";
+    let pathname = props.location.pathname;
 
+    //debugger;
     return axios.get(config.API_URL + '/mybookings/', {
 
         headers: {
@@ -35,9 +37,9 @@ export function getBookings(props) {
         .catch(function (error) {
              // getBookingsError(error);
             if (error.response.status == 403 || error.response.status == 401) {
-                closeSession();
+                closeSession(config.URL_LOGIN);
             } else {
-                browserHistory.push('/mybookings/');
+                browserHistory.push(config.URL);
             }
         });
 }
@@ -84,14 +86,16 @@ export function addBooking(props) {
         date: "2017-03-11",
         time: "11:00:00",
         company: 1,
-        client: 3,
+        client: 1,
+        client_name: "",
         service: 1,
         expert: 2,
         note: "Добавляем новую заявку",
         comment: "",
         is_new: true,
         is_cansel: false,
-        is_finished: false
+        is_finished: false,
+        url: ""
     };
 
     return axios.post(config.API_URL + '/mybookings/create/', obj, {
@@ -107,7 +111,8 @@ export function addBooking(props) {
 
             if (response.status == 201) {
 
-                store.dispatch(actions.addBookingSuccess(obj))
+                debugger;
+                store.dispatch(actions.addBookingSuccess(response.data))
                 // addBookingSuccess(obj);
                 //getBookings(props);
                 return response;
@@ -142,18 +147,20 @@ export function editBooking(props) {
         .then(response => {
 
             if (response.status == 200) {
-                editBookingSuccess(props.obj);
-                getBookings(props);
+                store.dispatch(actions.editBookingSuccess(response.data))
+                // editBookingSuccess(props.obj);
+                // getBookings(props);
                 return response;
             }
         })
         .catch(function (error) {
-            editBookingError(error);
+            store.dispatch(actions.editBookingError(error))
+            //editBookingError(error);
             if (error.response.status == 403 || error.response.status == 401) {
                 closeSession();
             } else {
-                getBookings(props);
-                browserHistory.push('/mybookings/');
+                //getBookings(props);
+                // browserHistory.push('/mybookings/');
             }
         });
 }

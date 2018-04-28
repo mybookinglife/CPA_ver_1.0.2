@@ -6,3 +6,7 @@ export const icon_book = "glyphicon glyphicon-book";
 export const icon_lock = "glyphicon glyphicon-lock";
 export const icon_user = "glyphicon glyphicon-user";
 export const icon_plus = "glyphicon glyphicon-plus";
+export const icon_login = "glyphicon glyphicon-log-in";
+export const icon_index = "glyphicon glyphicon-th-large";
+export const icon_new = "glyphicon glyphicon-file";
+export const icon_list = "glyphicon glyphicon-list-alt";

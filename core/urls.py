@@ -20,6 +20,7 @@ from core import views
 from core import views as core_views
 from django.contrib.auth import views as auth_views
 from rest_framework.authtoken.views import obtain_auth_token
+from mybookings.views import add_booking
 
 # from rest_framework import routers
 # from mybookings import views as booking_views

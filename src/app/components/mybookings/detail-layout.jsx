@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import { Link, browserHistory } from 'react-router';
+import { URL_LIST } from "../../constants/config";
 
 import ModalDialog from '../core/modal-dialog';
 import { editBooking } from '../../api/mybookings';
@@ -13,7 +14,7 @@ class DetailLayout extends Component{
     }
 
     closeModal(){
-        browserHistory.push('/mybookings/');
+        browserHistory.push(URL_LIST);
     }
 
     saveChange(){

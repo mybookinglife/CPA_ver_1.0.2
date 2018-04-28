@@ -21,12 +21,16 @@ function myBookings(state = initialState, action) {
             console.log(action.payload);
             return Object.assign(state);
         case types.ADD_BOOKINGS_SUCCESS:
-            return Object.assign(state);
+            newlist = state.list.concat(action.payload);
+            debugger;
+            return Object.assign({state, list: newlist})
         case types.ADD_BOOKINGS_ERROR:
             console.log(action.payload);
             return Object.assign(state);
         case types.EDIT_BOOKINGS_SUCCESS:
-            return Object.assign({state, list: state.list});
+            newlist = state.list.concat().indexOf(action.payload.id);
+            debugger;
+            return Object.assign({state, list: newlist});
         case types.EDIT_BOOKINGS_ERROR:
             console.log(action.payload);
             return Object.assign(state);
@@ -38,8 +42,7 @@ function myBookings(state = initialState, action) {
             console.log(action.payload);
             return Object.assign(state);
         case types.GET_PROFILE_BOOKINGS_SUCCESS:
-            newlist = state.list.concat();
-            return Object.assign({state, list: newlist, currentBooking: action.payload})
+            return Object.assign({state, list: state.list, currentBooking: action.payload})
         case types.GET_PROFILE_BOOKINGS_ERROR:
             console.log(action.payload);
             return Object.assign(state);
